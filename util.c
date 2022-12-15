@@ -43,7 +43,7 @@ char *parse_line(char *line, stack_t **stack, unsigned int line_num)
 	opcode = strtok(line, "\n ");
 	if (opcode == NULL)
 		return (NULL);
-	
+
 	if (strcmp(opcode, push) == 0)
 	{
 		arg = strtok(NULL, "\n ");
@@ -86,12 +86,12 @@ instruct_func get_op_func(char *s)
 					{"rotr", _rotr},
 					{NULL, NULL},
 	};
-	
+
 	while (instructions[i].f != NULL && strcmp(instructions[i].opcode, s) != 0)
 		++i;
-	
+
 	return (instructions[i].f);
- }
+}
 
 /**
  * read_file - reads bycode and runs commnads
@@ -112,29 +112,28 @@ void read_file(char *filename, stack_t **stack)
 		fprintf(stderr, "Error: Can't open file %s\n", filename);
 		exit(EXIT_FAILURE);
 	}
-       
+
 	while ((read = getline(&global_var.buffer, &i, global_var.file)) != -1)
 	{
-	  
 		line = parse_line(global_var.buffer, stack, line_count);
-		
+
 		if (line == NULL || line[0] == '#')
 		{
 			++line_count;
 			continue;
 		}
-		
+
 		s = get_op_func(line);
 		if (s == NULL)
 		{
 			fprintf(stderr, "L%d: unknown instruction %s\n", line_count, line);
 			exit(EXIT_FAILURE);
 		}
-		
+
 		s(stack, line_count);
 		++line_count;
 	}
-	free(global_var.buffer); 
+	free(global_var.buffer);
 	check = fclose(global_var.file);
 	if (check == -1)
 		exit(-1);

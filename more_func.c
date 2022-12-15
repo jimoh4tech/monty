@@ -23,6 +23,11 @@ void _swap(stack_t **stack, unsigned int line_number)
 }
 
 
+/**
+ * _add - add top of stack y second top stack
+ * @stack: pointer to lists for monty stack
+ * @line_number: number of line opcode occurs on
+ */
 void _add(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tmp = *stack;
@@ -86,8 +91,9 @@ void _pchar(stack_t **stack, unsigned int line_number)
 	}
 
 	val = (*stack)->n;
+
 	if (val > 127 || val < 0)
-  	{
+	{
 		fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
 		free(global_var.buffer);
 		fclose(global_var.file);

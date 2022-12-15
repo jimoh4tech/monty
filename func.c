@@ -37,7 +37,7 @@ void _pall(stack_t **stack, __attribute__ ((unused))unsigned int line_number)
 	stack_t *runner;
 
 	runner = *stack;
-	
+
 	while (runner != NULL)
 	{
 		printf("%d\n", runner->n);
@@ -60,8 +60,8 @@ void _pint(stack_t **stack, unsigned int line_number)
 	runner = *stack;
 	if (runner == NULL)
 	{
-	  fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
-	  exit(EXIT_FAILURE);
+		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
+		exit(EXIT_FAILURE);
 	}
 	printf("%d\n", runner->n);
 }

@@ -45,7 +45,7 @@ typedef struct instruction_s
 
 
 /**
- * struct global_variable - stores data of global variables
+ * struct global_variables - stores data of global variables
  * @file: opcode
  * @push_val: value of push operation
  * @buffer: pointer to the value
