@@ -80,6 +80,10 @@ instruct_func get_op_func(char *s)
 					{"mul", _mul},
 					{"div", _div},
 					{"mod", _mod},
+					{"pstr", _pstr},
+					{"pchar", _pchar},
+					{"rotl", _rotl},
+					{"rotr", _rotr},
 					{NULL, NULL},
 	};
 	
